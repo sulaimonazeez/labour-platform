@@ -1,4 +1,4 @@
-import { ApiError } from "../api/http";
+import { ApiError } from "../api/http.js";
 
 // Until a real admin model exists (roles, MFA, audit UI), platform staff are an ALLOWLIST of user ids in the
 // environment: PLATFORM_ADMIN_USER_IDS=<uuid>,<uuid>. Read on every call, so changing it needs no code change.

@@ -1,14 +1,14 @@
 import { and, eq, inArray, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { assignments, evidence, milestones, projects, providerProfiles, taskDependencies, tasks } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole } from "../authz/projects";
-import type { Executor } from "../db/types";
-import { canTransition, TASK_TRANSITIONS, type TaskStatus } from "../engine/state-machines";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { assignments, evidence, milestones, projects, providerProfiles, taskDependencies, tasks } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole } from "../authz/projects.js";
+import type { Executor } from "../db/types.js";
+import { canTransition, TASK_TRANSITIONS, type TaskStatus } from "../engine/state-machines.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Task work lifecycle (PRD §65, §134; DECISIONS D41-D44).
 //   provider: POST /tasks/:id/start, POST /tasks/:id/submit

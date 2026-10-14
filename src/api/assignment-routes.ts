@@ -1,16 +1,16 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, projectMembers, projects, providerProfiles, quoteVersions, quotes, taskInvitations, tasks,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import type { Executor } from "../db/types";
-import { canTransition, TASK_TRANSITIONS } from "../engine/state-machines";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import type { Executor } from "../db/types.js";
+import { canTransition, TASK_TRANSITIONS } from "../engine/state-machines.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Provider response to an award (PRD §65, §95; DECISIONS D35-D36).
 //   GET  /assignments              provider workspace: my assignments

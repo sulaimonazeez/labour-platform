@@ -1,18 +1,18 @@
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   approvalPolicies, approvalRequests, assignments, checkIns, bookings, costCentres, currencies, milestones, orgBudgets, orgDepartments,
   organisationMembers, organisations, orgPreferredProviders, orgSites, projectBudgets, projects, providerProfiles, quotes, slaPolicies, taskInvitations, tasks, users,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { requireOrgMember, type OrgRole } from "../authz/organisations";
-import { runIdempotent } from "../lib/idempotency";
-import { notify } from "../lib/notify";
-import { logEvent } from "../lib/events";
-import type { Executor } from "../db/types";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { requireOrgMember, type OrgRole } from "../authz/organisations.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { notify } from "../lib/notify.js";
+import { logEvent } from "../lib/events.js";
+import type { Executor } from "../db/types.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §7-8 (businesses, institutions), §76 (SLAs), §114-118 (roles, approval chains, budgets, facilities).
 // Approvals are an explicit workflow here: `requiresApproval()` is the one function other flows call to gate themselves.

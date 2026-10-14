@@ -1,6 +1,6 @@
 import "dotenv/config";
 import postgres from "postgres";
-import { app } from "./app";
+import { app } from "./app.js";
 
 // Shared by the integration tests added from session 5 on (test-requests.ts keeps its own copy).
 

@@ -1,19 +1,19 @@
 import { and, asc, eq, inArray, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, evidence, evidenceKind, milestones, projectMembers, projects, providerProfiles, quoteVersions, quotes, stages, tasks,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole, type ProjectRole } from "../authz/projects";
-import type { Executor } from "../db/types";
-import { MAX_MINOR } from "../engine/quote-math";
-import { canTransition, MILESTONE_TRANSITIONS, type MilestoneStatus } from "../engine/state-machines";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
-import { userHoldsAssignment } from "./evidence-routes";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole, type ProjectRole } from "../authz/projects.js";
+import type { Executor } from "../db/types.js";
+import { MAX_MINOR } from "../engine/quote-math.js";
+import { canTransition, MILESTONE_TRANSITIONS, type MilestoneStatus } from "../engine/state-machines.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
+import { userHoldsAssignment } from "./evidence-routes.js";
 
 // Milestones (PRD §57; DECISIONS D37-D40).
 //   manager: POST /projects/:id/milestones

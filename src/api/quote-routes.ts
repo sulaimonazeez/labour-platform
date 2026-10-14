@@ -1,20 +1,20 @@
 import { and, asc, desc, eq, inArray, ne } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, projectMembers, projects, providerProfiles, quoteLineItems, quoteLineKind, quoteVersions,
   quotes, taskInvitations, tasks,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { getProjectRoles, PROJECT_MANAGERS, requireProjectRole } from "../authz/projects";
-import type { Executor } from "../db/types";
-import { computeQuoteAmounts, QUANTITY_RE, MAX_MINOR } from "../engine/quote-math";
-import { canTransition, QUOTE_TRANSITIONS, TASK_TRANSITIONS, type QuoteStatus } from "../engine/state-machines";
-import { recordActivity } from "../lib/activity";
-import { managerUserIds, notify } from "../lib/notify";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, pgErrorCode, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { getProjectRoles, PROJECT_MANAGERS, requireProjectRole } from "../authz/projects.js";
+import type { Executor } from "../db/types.js";
+import { computeQuoteAmounts, QUANTITY_RE, MAX_MINOR } from "../engine/quote-math.js";
+import { canTransition, QUOTE_TRANSITIONS, TASK_TRANSITIONS, type QuoteStatus } from "../engine/state-machines.js";
+import { recordActivity } from "../lib/activity.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, pgErrorCode, readJson, uuidParam } from "./http.js";
 
 // Invitations, quotes and quote acceptance (PRD §52-53, §95; DECISIONS D28-D33).
 //   manager: POST /tasks/:id/invitations, GET /tasks/:id/quotes, request-revision / reject / accept

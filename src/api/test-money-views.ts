@@ -1,6 +1,6 @@
 import "dotenv/config";
-import { queryClient } from "../db/client";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
+import { queryClient } from "../db/client.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // Awards and payments views behind the milestone screen. Sandbox gateway. Needs `npm run db:seed`.
 process.env.PAYMENTS_PROVIDER = "sandbox";

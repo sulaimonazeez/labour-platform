@@ -1,9 +1,9 @@
 import { and, eq, inArray } from "drizzle-orm";
-import { messageTranslations, messages, users } from "../db/schema";
-import type { Executor } from "../db/types";
-import { extractJson, runAi } from "../ai/govern";
-import { AiUnavailable, getTranslator, type Translation } from "../ai/providers";
-import { logEvent } from "../lib/events";
+import { messageTranslations, messages, users } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { extractJson, runAi } from "../ai/govern.js";
+import { AiUnavailable, getTranslator, type Translation } from "../ai/providers.js";
+import { logEvent } from "../lib/events.js";
 
 // PRD §28-30. Original text is never touched; each translation is a separate row with provenance
 // (provider, model, confidence, timestamp). Translation failing never blocks a message from being sent.

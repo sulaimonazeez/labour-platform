@@ -1,11 +1,11 @@
 import { and, eq } from "drizzle-orm";
-import { ApiError } from "../api/http";
-import { milestones, payments } from "../db/schema";
-import type { Executor } from "../db/types";
-import { assertTransition, MILESTONE_TRANSITIONS, PAYMENT_TRANSITIONS } from "../engine/state-machines";
-import { recordActivity, type ActivityActorType } from "../lib/activity";
-import { postEntry } from "./ledger";
-import type { VerifyResult } from "./provider";
+import { ApiError } from "../api/http.js";
+import { milestones, payments } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { assertTransition, MILESTONE_TRANSITIONS, PAYMENT_TRANSITIONS } from "../engine/state-machines.js";
+import { recordActivity, type ActivityActorType } from "../lib/activity.js";
+import { postEntry } from "./ledger.js";
+import type { VerifyResult } from "./provider.js";
 
 export const paymentCols = {
   id: payments.id,

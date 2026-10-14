@@ -1,12 +1,12 @@
 import { desc, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { projects, providerProfiles, providerServices, quotes, serviceCategories, taskInvitations, tasks, users } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, pgErrorCode, readJson } from "./http";
+import { db } from "../db/client.js";
+import { projects, providerProfiles, providerServices, quotes, serviceCategories, taskInvitations, tasks, users } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, pgErrorCode, readJson } from "./http.js";
 
 // Provider profile (PRD §87) and the provider's own inbox of invitations (PRD §95, §142).
 // Minimal on purpose: services, skills, verification and approximate location come later.

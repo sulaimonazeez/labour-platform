@@ -1,7 +1,7 @@
 import "dotenv/config";
-import { db, queryClient } from "../db/client";
-import { postEntry } from "../payments/ledger";
-import { call, cleanupTestUsers, expect, registerProvider, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { postEntry } from "../payments/ledger.js";
+import { call, cleanupTestUsers, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // What an admin sees before approving a payout. Sandbox gateway. Needs `npm run db:seed`.
 process.env.PAYMENTS_PROVIDER = "sandbox";

@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { markets, userCredentials, users } from "../db/schema";
-import { burnVerify, hashPassword, verifyPassword } from "../auth/password";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { createSession, revokeSession } from "../auth/session";
-import { checkLimit, rateLimitByIp, sha256, tooMany } from "../auth/rate-limit";
-import { err, pgErrorCode } from "./http";
+import { db } from "../db/client.js";
+import { markets, userCredentials, users } from "../db/schema/index.js";
+import { burnVerify, hashPassword, verifyPassword } from "../auth/password.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { createSession, revokeSession } from "../auth/session.js";
+import { checkLimit, rateLimitByIp, sha256, tooMany } from "../auth/rate-limit.js";
+import { err, pgErrorCode } from "./http.js";
 
 const isIana = (tz: string) => {
   try {

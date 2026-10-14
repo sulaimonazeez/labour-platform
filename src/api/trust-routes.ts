@@ -1,20 +1,20 @@
 import { and, asc, desc, eq, inArray, isNull, or, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, insuranceRecords, languages, moderationReports, notificationPreferences, projectMembers, projects, providerProfiles, providerTeamMembers,
   providerTeams, reviews, subcontractRequests, tasks, users, verifications, privacyRequests, messages, requests, aiInteractions,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { requirePlatformAdmin } from "../authz/platform-admin";
-import { PROJECT_MANAGERS, requireProjectRole } from "../authz/projects";
-import { manualIdentityVerifier } from "../ai/providers";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { managerUserIds, notify } from "../lib/notify";
-import type { Executor } from "../db/types";
-import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { requirePlatformAdmin } from "../authz/platform-admin.js";
+import { PROJECT_MANAGERS, requireProjectRole } from "../authz/projects.js";
+import { manualIdentityVerifier } from "../ai/providers.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import type { Executor } from "../db/types.js";
+import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 const notFound = () => new ApiError(404, "not_found", "Not found");
 const forbidden = () => new ApiError(403, "forbidden", "You do not have permission to do this");

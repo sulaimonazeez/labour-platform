@@ -1,4 +1,4 @@
-import { ApiError } from "../api/http";
+import { ApiError } from "../api/http.js";
 
 // Private object storage behind an interface (PRD §132, §148: signed URLs for private media, no vendor lock-in).
 //   STORAGE_DRIVER=supabase (default when SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY are set) | memory (tests) | none

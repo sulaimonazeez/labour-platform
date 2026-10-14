@@ -1,11 +1,11 @@
 import "dotenv/config";
 import { and, eq, sql } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, ledgerEntries, payouts, providerPayoutAccounts } from "../db/schema";
-import { accountBalance, postEntry } from "../payments/ledger";
-import { signSandboxWebhook, simulateSandboxTransfer } from "../payments/sandbox";
-import { app } from "./app";
-import { call, cleanupTestUsers, expect, registerProvider, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, ledgerEntries, payouts, providerPayoutAccounts } from "../db/schema/index.js";
+import { accountBalance, postEntry } from "../payments/ledger.js";
+import { signSandboxWebhook, simulateSandboxTransfer } from "../payments/sandbox.js";
+import { app } from "./app.js";
+import { call, cleanupTestUsers, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // Payouts against the SANDBOX gateway: reserve -> admin approve -> paid/failed, the ledger at every step, and the safety rules.
 // Needs `npm run db:migrate` (payout tables) and `npm run db:seed`. Run: npm run test:payouts

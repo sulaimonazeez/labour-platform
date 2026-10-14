@@ -1,13 +1,13 @@
 import { and, desc, eq, gte, inArray, lt } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { activityEvents, payments, payouts, providerPayoutAccounts, providerProfiles } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { requirePlatformAdmin } from "../authz/platform-admin";
-import { beginTransfer, cancelPendingPayout, payoutCols, payoutGateway, runTransfer, verifyPayout } from "../payments/payouts";
-import { paymentCols, pendingTtlMs } from "../payments/service";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { activityEvents, payments, payouts, providerPayoutAccounts, providerProfiles } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { requirePlatformAdmin } from "../authz/platform-admin.js";
+import { beginTransfer, cancelPendingPayout, payoutCols, payoutGateway, runTransfer, verifyPayout } from "../payments/payouts.js";
+import { paymentCols, pendingTtlMs } from "../payments/service.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Platform staff only (allowlist, see authz/platform-admin.ts). Everyone else gets 404.
 //   GET  /admin/attention                 things a human must look at

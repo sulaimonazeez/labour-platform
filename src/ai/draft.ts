@@ -1,9 +1,9 @@
 import { and, desc, eq, or, sql } from "drizzle-orm";
 import { z } from "zod";
-import { projectTemplates, templateVersions } from "../db/schema";
-import type { Executor } from "../db/types";
-import { AiUnavailable } from "./providers";
-import { extractJson, runAi } from "./govern";
+import { projectTemplates, templateVersions } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { AiUnavailable } from "./providers.js";
+import { extractJson, runAi } from "./govern.js";
 
 // PRD §19-21: Retrieve -> Adapt -> Generate. A validated template is preferred over inventing a process.
 // Whatever the source, the result is validated against ONE schema and persisted as a draft; nothing is operational

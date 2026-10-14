@@ -3,9 +3,9 @@ import {
   type AnyPgColumn, boolean, char, check, date, index, integer, jsonb, pgTable,
   primaryKey, smallint, text, unique, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, pk, updatedAt } from "./_common";
-import { measurementSystem, verificationClass } from "./enums";
-import { serviceCategories } from "./taxonomy";
+import { createdAt, pk, updatedAt } from "./_common.js";
+import { measurementSystem, verificationClass } from "./enums.js";
+import { serviceCategories } from "./taxonomy.js";
 
 export const languages = pgTable("languages", {
   code: text("code").primaryKey(), // BCP-47, e.g. en, fr-CA, ar

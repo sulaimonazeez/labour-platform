@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { getStorage } from "./lib/storage";
+import { getStorage } from "./lib/storage.js";
 
 // Live check of the Supabase Storage adapter (src/lib/storage.ts), no API or database involved.
 // Needs SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY and a PRIVATE bucket (default name: request-media).

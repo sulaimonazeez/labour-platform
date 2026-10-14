@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { eq, like } from "drizzle-orm";
-import { app } from "./app";
-import { db, queryClient } from "../db/client";
-import { sessions, userCredentials, users } from "../db/schema";
-import { hashToken } from "../auth/session";
+import { app } from "./app.js";
+import { db, queryClient } from "../db/client.js";
+import { sessions, userCredentials, users } from "../db/schema/index.js";
+import { hashToken } from "../auth/session.js";
 
 // In-process tests against the real DB. Creates one throwaway user (authtest-*@test.invalid)
 // and deletes it at the end (sessions and credentials cascade).

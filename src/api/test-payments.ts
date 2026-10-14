@@ -1,13 +1,13 @@
 import "dotenv/config";
 import { eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, ledgerAccounts, ledgerEntries, ledgerLines, payments } from "../db/schema";
-import { computeFeeMinor, pickFeeRule, type FeeRule } from "../engine/fees";
-import { accountBalance } from "../payments/ledger";
-import { signSandboxWebhook, simulateSandboxPayment } from "../payments/sandbox";
-import { app } from "./app";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
-import { forceFunded } from "./test-fund";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, ledgerAccounts, ledgerEntries, ledgerLines, payments } from "../db/schema/index.js";
+import { computeFeeMinor, pickFeeRule, type FeeRule } from "../engine/fees.js";
+import { accountBalance } from "../payments/ledger.js";
+import { signSandboxWebhook, simulateSandboxPayment } from "../payments/sandbox.js";
+import { app } from "./app.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
+import { forceFunded } from "./test-fund.js";
 
 // Payments, ledger and webhooks against the SANDBOX provider (no real gateway). Needs `npm run db:seed`.
 // Run: npm run test:payments

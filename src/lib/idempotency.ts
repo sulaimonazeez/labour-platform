@@ -2,10 +2,10 @@ import { createHash } from "node:crypto";
 import { and, eq } from "drizzle-orm";
 import type { Context } from "hono";
 import type { ContentfulStatusCode } from "hono/utils/http-status";
-import { db } from "../db/client";
-import { idempotencyKeys } from "../db/schema";
-import type { Tx } from "../auth/session";
-import { ApiError } from "../api/http";
+import { db } from "../db/client.js";
+import { idempotencyKeys } from "../db/schema/index.js";
+import type { Tx } from "../auth/session.js";
+import { ApiError } from "../api/http.js";
 
 // PRD §136. Design (DECISIONS D20):
 //  - The key row is claimed INSIDE the same transaction as the business write, and the response is

@@ -1,5 +1,5 @@
 import { createMiddleware } from "hono/factory";
-import { verifySession } from "./session";
+import { verifySession } from "./session.js";
 
 export type AuthEnv = { Variables: { auth: { userId: string; sessionId: string } } };
 

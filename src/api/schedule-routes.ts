@@ -1,19 +1,19 @@
 import { and, asc, eq, gt, inArray, lt, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, availabilityExceptions, bookings, cancellationPolicies, checkIns, marketHolidays, markets, projectBudgets, projectMembers,
   projects, providerAvailability, providerProfiles, recurringOccurrences, recurringServices, stages, taskInvitations, tasks, users,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin";
-import { getProjectRoles, PROJECT_MANAGERS } from "../authz/projects";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { managerUserIds, notify } from "../lib/notify";
-import type { Executor } from "../db/types";
-import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin.js";
+import { getProjectRoles, PROJECT_MANAGERS } from "../authz/projects.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import type { Executor } from "../db/types.js";
+import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §41-43 (time zones, calendars, travel), §71-75 (scheduling, check-in, cancellation, no-show), §118 (recurring).
 // Every timestamp is stored as an instant (timestamptz) and shown in the viewer's zone; rules read the PROJECT's zone.

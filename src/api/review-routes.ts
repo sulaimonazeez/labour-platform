@@ -1,14 +1,14 @@
 import { and, desc, eq, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { assignments, projects, providerProfiles, reviews, tasks } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { PROJECT_MANAGERS, requireProjectRole } from "../authz/projects";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { notify } from "../lib/notify";
-import { ApiError, parseOrThrow, pgErrorCode, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { assignments, projects, providerProfiles, reviews, tasks } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { PROJECT_MANAGERS, requireProjectRole } from "../authz/projects.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { notify } from "../lib/notify.js";
+import { ApiError, parseOrThrow, pgErrorCode, readJson, uuidParam } from "./http.js";
 
 // Reviews (PRD §91-92): several dimensions, not one star rating; only after the provider COMPLETED work in the project.
 //   GET  /projects/:id/reviews       manager: providers who finished work here and whether you already reviewed them

@@ -2,7 +2,7 @@ import "dotenv/config";
 import { getTableName, is } from "drizzle-orm";
 import { PgTable } from "drizzle-orm/pg-core";
 import postgres from "postgres";
-import * as schema from "./schema";
+import * as schema from "./schema/index.js";
 
 // Plain-Postgres lockdown (D2): Supabase's REST API must not be able to touch OUR tables.
 // Scope: ONLY tables defined in src/db/schema. Other apps' tables in the same database are never touched.

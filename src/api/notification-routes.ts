@@ -1,10 +1,10 @@
 import { and, desc, eq, isNull, sql } from "drizzle-orm";
 import { Hono } from "hono";
-import { db } from "../db/client";
-import { notifications } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { notifications } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, readJson, uuidParam } from "./http.js";
 
 // PRD §112: the in-app inbox.  GET /notifications, POST /notifications/:id/read, POST /notifications/read-all
 export const notificationRoutes = new Hono<AuthEnv>();

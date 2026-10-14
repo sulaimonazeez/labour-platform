@@ -1,18 +1,18 @@
 import { and, asc, desc, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, changeRequests, changeRequestTasks, projectBaselines, projectBudgets, projects, providerProfiles, tasks, users,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { getProjectRoles, isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds, requireProjectRole } from "../authz/projects";
-import type { Executor } from "../db/types";
-import { CHANGE_TRANSITIONS, canTransition, type ChangeStatus } from "../engine/state-machines";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { managerUserIds, notify } from "../lib/notify";
-import { ApiError, parseOrThrow, pgErrorCode, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { getProjectRoles, isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds, requireProjectRole } from "../authz/projects.js";
+import type { Executor } from "../db/types.js";
+import { CHANGE_TRANSITIONS, canTransition, type ChangeStatus } from "../engine/state-machines.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import { ApiError, parseOrThrow, pgErrorCode, readJson, uuidParam } from "./http.js";
 
 // Change management (PRD §58-60). Nothing silently edits the agreement: a change is PROPOSED, the OTHER party accepts or
 // rejects it, and acceptance creates a NEW baseline in the same transaction (the old one is never edited).

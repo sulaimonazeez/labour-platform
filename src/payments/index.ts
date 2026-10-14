@@ -1,7 +1,7 @@
-import { ApiError } from "../api/http";
-import { createPaystackProvider } from "./paystack";
-import type { PaymentProvider } from "./provider";
-import { sandboxProvider } from "./sandbox";
+import { ApiError } from "../api/http.js";
+import { createPaystackProvider } from "./paystack.js";
+import type { PaymentProvider } from "./provider.js";
+import { sandboxProvider } from "./sandbox.js";
 
 // Provider selection is configuration, not code (PRD §47).
 //   PAYMENTS_PROVIDER=sandbox|paystack   (default sandbox; sandbox is refused when NODE_ENV=production)

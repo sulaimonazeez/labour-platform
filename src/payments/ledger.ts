@@ -1,6 +1,6 @@
 import { and, eq, sql } from "drizzle-orm";
-import { ledgerAccounts, ledgerEntries, ledgerLines, type ledgerAccountKind, type ledgerEntryKind } from "../db/schema";
-import type { Executor } from "../db/types";
+import { ledgerAccounts, ledgerEntries, ledgerLines, type ledgerAccountKind, type ledgerEntryKind } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
 
 // Double-entry posting (PRD §50). Balances are derived from lines, never stored. The database independently
 // enforces: line currency = account currency, every entry balances per currency, entries/lines are append-only.

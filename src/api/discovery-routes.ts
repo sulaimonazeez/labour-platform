@@ -1,9 +1,9 @@
 import { and, asc, desc, eq, ilike, inArray, ne, or, sql } from "drizzle-orm";
 import { Hono } from "hono";
-import { db } from "../db/client";
-import { marketCurrencies, markets, projectMembers, projects, providerProfiles, providerServices, serviceCategories, tasks } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, type ProjectRole } from "../authz/projects";
+import { db } from "../db/client.js";
+import { marketCurrencies, markets, projectMembers, projects, providerProfiles, providerServices, serviceCategories, tasks } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, type ProjectRole } from "../authz/projects.js";
 
 // Read-only endpoints a front end needs before it can build its screens:
 //   GET /reference       public reference data (active markets and their currencies)

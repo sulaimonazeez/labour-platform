@@ -2,18 +2,18 @@ import { randomUUID } from "node:crypto";
 import { and, asc, eq, gt, or, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { requestAnswers, requestAttachments, requests, serviceCategories } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import type { Executor } from "../db/types";
+import { db } from "../db/client.js";
+import { requestAnswers, requestAttachments, requests, serviceCategories } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import type { Executor } from "../db/types.js";
 import {
   EMERGENCY_MESSAGE, MEDIA_RULES, missingRequired, questionsFor, safetyFlags, validateAnswers,
   type AnswerValue, type MediaKind,
-} from "../engine/intake-questions";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { getStorage } from "../lib/storage";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../engine/intake-questions.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { getStorage } from "../lib/storage.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Request intake: guided questions + photo/video evidence of the problem (PRD §17, §37, §141; DECISIONS D38-D40).
 // Owner-only for now: providers see a request's media only after they are invited (matching step, not built yet; PRD §40).

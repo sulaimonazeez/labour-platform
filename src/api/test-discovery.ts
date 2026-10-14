@@ -1,6 +1,6 @@
 import "dotenv/config";
-import { queryClient } from "../db/client";
-import { call, cleanupTestUsers, createProject, expect, registerUser } from "./test-helpers";
+import { queryClient } from "../db/client.js";
+import { call, cleanupTestUsers, createProject, expect, registerUser } from "./test-helpers.js";
 
 // Reference data, "my projects" and the provider directory. Needs `npm run db:seed`.
 const stamp = Date.now().toString(36);

@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { and, eq } from "drizzle-orm";
 import postgres from "postgres";
-import { app } from "./app";
-import { db, queryClient } from "../db/client";
-import { activityEvents, idempotencyKeys, requests } from "../db/schema";
+import { app } from "./app.js";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, idempotencyKeys, requests } from "../db/schema/index.js";
 
 // In-process tests against the real DB (needs `npm run db:seed`: market NG + category plumbing_residential).
 // Creates two throwaway users (reqtest-*@test.invalid). Cleanup runs before and after via DIRECT_URL:

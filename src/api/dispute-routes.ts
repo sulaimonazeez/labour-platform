@@ -1,17 +1,17 @@
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { assignments, disputeEntries, disputes, merchantOrders, milestones, providerProfiles, quotes, tasks } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin";
-import { getProjectRoles, PROJECT_MANAGERS, requireProjectRole } from "../authz/projects";
-import { disputeSummary } from "../ai/context";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { managerUserIds, notify } from "../lib/notify";
-import type { Executor } from "../db/types";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { assignments, disputeEntries, disputes, merchantOrders, milestones, providerProfiles, quotes, tasks } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin.js";
+import { getProjectRoles, PROJECT_MANAGERS, requireProjectRole } from "../authz/projects.js";
+import { disputeSummary } from "../ai/context.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import type { Executor } from "../db/types.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §101-104. A dispute is scoped to ONE obligation. Only that milestone is frozen; unrelated tasks, providers,
 // merchant orders and the rest of the project's funds are never touched (PRD §103). People decide outcomes; the AI summary

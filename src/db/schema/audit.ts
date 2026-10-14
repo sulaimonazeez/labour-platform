@@ -1,12 +1,12 @@
 import {
   index, integer, jsonb, pgTable, primaryKey, text, timestamp, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, pk } from "./_common";
-import { users } from "./identity";
-import { projects } from "./projects";
+import { createdAt, pk } from "./_common.js";
+import { users } from "./identity.js";
+import { projects } from "./projects.js";
 import {
   actorType, notificationChannel, notificationStatus,
-} from "./enums";
+} from "./enums.js";
 
 // PRD §68, §133, §137: canonical, append-only chronology generated from system events.
 export const activityEvents = pgTable("activity_events", {

@@ -1,20 +1,20 @@
 import { and, asc, desc, eq, gt, ilike, inArray, isNull, lte, or, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assetServiceHistory, assets, currencies, marketTaxRules, merchantOrderItems, merchantOrders, merchants, procurementQuotes, procurementRequests,
   products, projects, providerProfiles, requestCandidates, requests, serviceCategories, tasks, users, warrantyClaims, warranties, approvalRequests,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isPlatformAdmin } from "../authz/platform-admin";
-import { PROJECT_MANAGERS, requireProjectRole } from "../authz/projects";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { notify } from "../lib/notify";
-import type { Executor } from "../db/types";
-import { requiresApproval } from "./org-routes";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isPlatformAdmin } from "../authz/platform-admin.js";
+import { PROJECT_MANAGERS, requireProjectRole } from "../authz/projects.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { notify } from "../lib/notify.js";
+import type { Executor } from "../db/types.js";
+import { requiresApproval } from "./org-routes.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §13, §51 (commerce is linked to labour but financially independent), §63-64 (materials, procurement),
 // §82-86 (warranties, aftercare, assets, repeat hire), §123 (marketplace commerce stays modular).

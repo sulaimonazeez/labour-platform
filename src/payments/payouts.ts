@@ -1,12 +1,12 @@
 import { and, eq, sql } from "drizzle-orm";
-import { ApiError } from "../api/http";
-import { db } from "../db/client";
-import { activityEvents, payouts, providerPayoutAccounts, providerProfiles } from "../db/schema";
-import type { Executor } from "../db/types";
-import { recordActivity, type ActivityActorType } from "../lib/activity";
-import { getPaymentProvider } from "./index";
-import { accountBalance, postEntry } from "./ledger";
-import { ProviderError, type PayoutGateway, type TransferVerify } from "./provider";
+import { ApiError } from "../api/http.js";
+import { db } from "../db/client.js";
+import { activityEvents, payouts, providerPayoutAccounts, providerProfiles } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { recordActivity, type ActivityActorType } from "../lib/activity.js";
+import { getPaymentProvider } from "./index.js";
+import { accountBalance, postEntry } from "./ledger.js";
+import { ProviderError, type PayoutGateway, type TransferVerify } from "./provider.js";
 
 // Money OUT (PRD §125; DECISIONS D55-D58). Ledger flow for one payout:
 //   request   : provider_earnings -> payout_clearing            (earnings are RESERVED; key payout:<id>:reserved)

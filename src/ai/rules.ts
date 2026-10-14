@@ -1,6 +1,6 @@
 import { and, eq, inArray } from "drizzle-orm";
-import { serviceCategories, serviceCategorySynonyms, serviceCategoryTranslations } from "../db/schema";
-import type { Executor } from "../db/types";
+import { serviceCategories, serviceCategorySynonyms, serviceCategoryTranslations } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
 
 // PRD §3, §37, §80, §106: deterministic understanding of "what do you need done?". It reads the DATABASE taxonomy
 // (canonical key + translated names + synonyms, PRD §24), so adding a language or a synonym needs no deploy.

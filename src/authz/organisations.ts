@@ -1,7 +1,7 @@
 import { and, eq } from "drizzle-orm";
-import { organisationMembers, type orgRole } from "../db/schema";
-import type { Executor } from "../db/types";
-import { ApiError } from "../api/http";
+import { organisationMembers, type orgRole } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { ApiError } from "../api/http.js";
 
 export type OrgRole = (typeof orgRole.enumValues)[number];
 

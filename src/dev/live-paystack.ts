@@ -1,8 +1,8 @@
 import "dotenv/config";
 import readline from "node:readline/promises";
-import { db, queryClient } from "../db/client";
-import { accountBalance } from "../payments/ledger";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "../api/test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { accountBalance } from "../payments/ledger.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "../api/test-helpers.js";
 
 // LIVE TEST against Paystack TEST mode, run on localhost: no deployment, no webhook, no real money.
 //   1. PAYSTACK_SECRET_KEY=sk_test_... in .env      2. npm run live:paystack

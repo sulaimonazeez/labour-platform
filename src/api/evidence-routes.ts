@@ -1,15 +1,15 @@
 import { and, asc, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { assignments, evidence, evidenceKind, milestones, projects, providerProfiles, tasks } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, providerVisibleTaskIds, requireProjectRole, type ProjectRole } from "../authz/projects";
-import type { Executor } from "../db/types";
-import { recordActivity } from "../lib/activity";
-import { getStorage } from "../lib/storage";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { assignments, evidence, evidenceKind, milestones, projects, providerProfiles, tasks } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, providerVisibleTaskIds, requireProjectRole, type ProjectRole } from "../authz/projects.js";
+import type { Executor } from "../db/types.js";
+import { recordActivity } from "../lib/activity.js";
+import { getStorage } from "../lib/storage.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Evidence METADATA (PRD §66-67; DECISIONS D37-D39). The file itself is uploaded to private storage by a
 // later step; this records what was captured, by whom and when. Rows are append-only (database-enforced).

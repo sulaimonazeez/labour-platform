@@ -3,11 +3,11 @@ import {
   boolean, char, check, index, integer, numeric, pgTable, primaryKey, text, timestamp, unique,
   uniqueIndex, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, minor, pk, updatedAt } from "./_common";
-import { currencies } from "./config";
-import { providerProfiles, users } from "./identity";
-import { projects, requests, tasks } from "./projects";
-import { assignmentStatus, candidateStatus, quoteLineKind, quoteStatus } from "./enums";
+import { createdAt, minor, pk, updatedAt } from "./_common.js";
+import { currencies } from "./config.js";
+import { providerProfiles, users } from "./identity.js";
+import { projects, requests, tasks } from "./projects.js";
+import { assignmentStatus, candidateStatus, quoteLineKind, quoteStatus } from "./enums.js";
 
 export const quotes = pgTable("quotes", {
   id: pk(),

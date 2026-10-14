@@ -1,7 +1,7 @@
 import { and, eq, inArray } from "drizzle-orm";
-import { notifications, projectMembers, users } from "../db/schema";
-import type { Executor } from "../db/types";
-import { PROJECT_MANAGERS } from "../authz/projects";
+import { notifications, projectMembers, users } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { PROJECT_MANAGERS } from "../authz/projects.js";
 
 // PRD §112-113: in-app notifications, written inside the caller's transaction so a rolled-back action never notifies.
 // The row carries a machine `kind` and ids only; wording is rendered by the client in the user's language (PRD §113).

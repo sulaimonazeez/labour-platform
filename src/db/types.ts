@@ -1,6 +1,6 @@
 import type { PgDatabase } from "drizzle-orm/pg-core";
 import type { PostgresJsQueryResultHKT } from "drizzle-orm/postgres-js";
-import type * as schema from "./schema";
+import type * as schema from "./schema/index.js";
 
 /**
  * Anything that can run queries: the top-level `db` or a transaction handle.

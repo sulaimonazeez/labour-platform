@@ -1,5 +1,5 @@
-import { activityEvents, type actorType } from "../db/schema";
-import type { Executor } from "../db/types";
+import { activityEvents, type actorType } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
 
 export type ActivityActorType = (typeof actorType.enumValues)[number];
 

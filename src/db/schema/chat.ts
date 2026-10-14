@@ -1,11 +1,11 @@
 import {
   index, jsonb, numeric, pgTable, primaryKey, text, timestamp, unique, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, pk } from "./_common";
-import { languages } from "./config";
-import { users } from "./identity";
-import { projects, tasks } from "./projects";
-import { conversationContext } from "./enums";
+import { createdAt, pk } from "./_common.js";
+import { languages } from "./config.js";
+import { users } from "./identity.js";
+import { projects, tasks } from "./projects.js";
+import { conversationContext } from "./enums.js";
 
 // PRD §31-32: one conversation per (context_type, context_id).
 // Convention: for context_type='project', context_id = project id.

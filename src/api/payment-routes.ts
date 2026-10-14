@@ -2,22 +2,22 @@ import { randomUUID } from "node:crypto";
 import { and, eq, inArray, ne } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { assignments, milestones, payments, platformFeeRules, projects, users } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole, type ProjectRole } from "../authz/projects";
-import type { Executor } from "../db/types";
-import { computeFeeMinor, pickFeeRule } from "../engine/fees";
-import { assertTransition, MILESTONE_TRANSITIONS, PAYMENT_TRANSITIONS } from "../engine/state-machines";
-import { recordActivity } from "../lib/activity";
-import { idempotencyKey, runIdempotent } from "../lib/idempotency";
-import { getPaymentProvider } from "../payments";
-import { postEntry } from "../payments/ledger";
-import { ProviderError, type PaymentProvider } from "../payments/provider";
-import { GATEWAY_ALERT_EVENT, logGatewayEvent } from "../payments/gateway-events";
-import { handleTransferWebhook } from "../payments/payouts";
-import { applyVerification, expirePayment, isStale, loadPayment, paymentCols } from "../payments/service";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { assignments, milestones, payments, platformFeeRules, projects, users } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole, type ProjectRole } from "../authz/projects.js";
+import type { Executor } from "../db/types.js";
+import { computeFeeMinor, pickFeeRule } from "../engine/fees.js";
+import { assertTransition, MILESTONE_TRANSITIONS, PAYMENT_TRANSITIONS } from "../engine/state-machines.js";
+import { recordActivity } from "../lib/activity.js";
+import { idempotencyKey, runIdempotent } from "../lib/idempotency.js";
+import { getPaymentProvider } from "../payments/index.js";
+import { postEntry } from "../payments/ledger.js";
+import { ProviderError, type PaymentProvider } from "../payments/provider.js";
+import { GATEWAY_ALERT_EVENT, logGatewayEvent } from "../payments/gateway-events.js";
+import { handleTransferWebhook } from "../payments/payouts.js";
+import { applyVerification, expirePayment, isStale, loadPayment, paymentCols } from "../payments/service.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Payments (PRD §47-51, §57; DECISIONS D45-D49).
 //   manager/finance approver: POST /milestones/:id/payments   (start a protected payment for a milestone)

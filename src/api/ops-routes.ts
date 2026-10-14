@@ -2,21 +2,21 @@ import { randomUUID } from "node:crypto";
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assets, assignments, disputes, evidence, issues, milestones, projectDocuments, projectUpdates, projects, safetyIncidents, tasks,
   warranties,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { requirePlatformAdmin } from "../authz/platform-admin";
-import { isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds, requireProjectRole } from "../authz/projects";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { getStorage } from "../lib/storage";
-import { managerUserIds, notify } from "../lib/notify";
-import { EMERGENCY_NOTE } from "../ai/rules";
-import type { Executor } from "../db/types";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { requirePlatformAdmin } from "../authz/platform-admin.js";
+import { isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds, requireProjectRole } from "../authz/projects.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { getStorage } from "../lib/storage.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import { EMERGENCY_NOTE } from "../ai/rules.js";
+import type { Executor } from "../db/types.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §65 (updates, blockers, material requests), §78 (issues), §79 (safety incidents), §138 (documents),
 // §139-140 (handover and closure). Providers only touch tasks they are assigned to (PRD §34).

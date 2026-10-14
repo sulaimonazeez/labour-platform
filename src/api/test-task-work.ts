@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, tasks } from "../db/schema";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
-import { forceFunded } from "./test-fund";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, tasks } from "../db/schema/index.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
+import { forceFunded } from "./test-fund.js";
 
 // Task work lifecycle: start, submit, request changes, approve, complete (DECISIONS D41-D44).
 // Needs `npm run db:seed`. Run: npm run test:task-work

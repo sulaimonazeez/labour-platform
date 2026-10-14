@@ -1,9 +1,9 @@
 import { and, eq, sql } from "drizzle-orm";
-import { aiInteractions, aiUsageDaily } from "../db/schema";
-import type { Executor } from "../db/types";
-import { isFeatureOn } from "../lib/flags";
-import { logEvent } from "../lib/events";
-import { AiUnavailable, getAi, type AiPurpose, type AiResponse } from "./providers";
+import { aiInteractions, aiUsageDaily } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { isFeatureOn } from "../lib/flags.js";
+import { logEvent } from "../lib/events.js";
+import { AiUnavailable, getAi, type AiPurpose, type AiResponse } from "./providers.js";
 
 // PRD §106, §147, §149: AI is used only where it helps, is metered per person, can be switched off by flag, and every
 // call is logged. Anything that throws AiUnavailable MUST be caught by the caller, which then continues deterministically.

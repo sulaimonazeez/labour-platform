@@ -3,14 +3,14 @@ import {
   bigint, char, check, date, foreignKey, index, integer, jsonb, pgTable, primaryKey, smallint,
   text, timestamp, unique, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, minor, pk, updatedAt } from "./_common";
-import { currencies } from "./config";
-import { providerProfiles, users } from "./identity";
-import { projects, stages, tasks } from "./projects";
-import { assignments } from "./quotes";
+import { createdAt, minor, pk, updatedAt } from "./_common.js";
+import { currencies } from "./config.js";
+import { providerProfiles, users } from "./identity.js";
+import { projects, stages, tasks } from "./projects.js";
+import { assignments } from "./quotes.js";
 import {
   changeFinancialEffect, changeStatus, evidenceKind, milestoneStatus,
-} from "./enums";
+} from "./enums.js";
 
 export const changeRequests = pgTable("change_requests", {
   id: pk(),

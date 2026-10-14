@@ -1,10 +1,10 @@
 import "dotenv/config";
 import { eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, requestAttachments } from "../db/schema";
-import { memoryStorage } from "../lib/storage";
-import { missingRequired, questionsFor, safetyFlags, validateAnswers } from "../engine/intake-questions";
-import { call, cleanupTestUsers, expect, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, requestAttachments } from "../db/schema/index.js";
+import { memoryStorage } from "../lib/storage.js";
+import { missingRequired, questionsFor, safetyFlags, validateAnswers } from "../engine/intake-questions.js";
+import { call, cleanupTestUsers, expect, registerUser } from "./test-helpers.js";
 
 // Intake: guided questions, answers, photo/video attachments. Uses in-memory storage (no Supabase needed).
 // Needs `npm run db:seed` and the intake migration. Run: npm run test:intake  (the script sets STORAGE_DRIVER=memory and a limit of 3 files)

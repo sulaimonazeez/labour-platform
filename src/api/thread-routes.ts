@@ -2,14 +2,14 @@ import { createHash } from "node:crypto";
 import { and, asc, desc, eq } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { conversationParticipants, conversations, messages, providerProfiles, quotes, taskInvitations, tasks, users } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { managerUserIds, notify } from "../lib/notify";
-import { getProjectRoles, PROJECT_MANAGERS } from "../authz/projects";
-import type { Executor } from "../db/types";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { conversationParticipants, conversations, messages, providerProfiles, quotes, taskInvitations, tasks, users } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import { getProjectRoles, PROJECT_MANAGERS } from "../authz/projects.js";
+import type { Executor } from "../db/types.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Pre-award conversation between a project manager and ONE invited provider (PRD §31, §34, §99).
 //   GET  /tasks/:id/invitations                         manager: who was invited, and where each one stands

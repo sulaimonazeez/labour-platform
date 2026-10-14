@@ -3,13 +3,13 @@ import {
   boolean, char, check, date, index, integer, jsonb, numeric, pgTable, primaryKey, smallint,
   text, timestamp, unique, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, minor, pk, updatedAt } from "./_common";
-import { currencies, languages, markets } from "./config";
-import { organisations, providerProfiles, users } from "./identity";
-import { projects, requests, tasks } from "./projects";
-import { assignments } from "./quotes";
-import { conversations, messages } from "./chat";
-import { notificationChannel, orgRole, paymentState } from "./enums";
+import { createdAt, minor, pk, updatedAt } from "./_common.js";
+import { currencies, languages, markets } from "./config.js";
+import { organisations, providerProfiles, users } from "./identity.js";
+import { projects, requests, tasks } from "./projects.js";
+import { assignments } from "./quotes.js";
+import { conversations, messages } from "./chat.js";
+import { notificationChannel, orgRole, paymentState } from "./enums.js";
 
 // ──────────────────────────────────────────────────────────────────────────────
 // The blueprint layer: every PRD domain that was not yet a table.

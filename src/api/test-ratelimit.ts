@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { like } from "drizzle-orm";
-import { app } from "./app";
-import { db, queryClient } from "../db/client";
-import { rateLimitHits } from "../db/schema";
-import { checkLimit } from "../auth/rate-limit";
+import { app } from "./app.js";
+import { db, queryClient } from "../db/client.js";
+import { rateLimitHits } from "../db/schema/index.js";
+import { checkLimit } from "../auth/rate-limit.js";
 
 // Runs with the limiter ENABLED (do not set RATE_LIMIT_DISABLED). Uses unique keys / fake IPs
 // and removes its own counters at the end.

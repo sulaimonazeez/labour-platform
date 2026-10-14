@@ -1,9 +1,9 @@
 import "dotenv/config";
-import { stableStringify } from "../lib/idempotency";
+import { stableStringify } from "../lib/idempotency.js";
 import { and, eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, projectMembers, taskInvitations, tasks } from "../db/schema";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, projectMembers, taskInvitations, tasks } from "../db/schema/index.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // Provider response to an award: list, accept, reject (DECISIONS D35-D36).
 // Needs `npm run db:seed`. Run: npm run test:assignments

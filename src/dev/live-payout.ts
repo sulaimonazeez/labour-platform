@@ -1,8 +1,8 @@
 import "dotenv/config";
 import readline from "node:readline/promises";
-import { db, queryClient } from "../db/client";
-import { postEntry } from "../payments/ledger";
-import { call, cleanupTestUsers, expect, registerProvider, registerUser } from "../api/test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { postEntry } from "../payments/ledger.js";
+import { call, cleanupTestUsers, expect, registerProvider, registerUser } from "../api/test-helpers.js";
 
 // LIVE payout test against Paystack TEST mode (localhost, no real money). Run AFTER `npm run live:paystack` has passed.
 //   npm run live:payout

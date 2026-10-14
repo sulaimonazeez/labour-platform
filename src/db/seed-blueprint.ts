@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { and, eq } from "drizzle-orm";
-import { db, queryClient } from "./client";
+import { db, queryClient } from "./client.js";
 import {
   cancellationPolicies, featureFlags, projectTemplates, retentionPolicies, serviceCategories, serviceCategorySynonyms, serviceCategoryTranslations, templateVersions,
-} from "./schema";
+} from "./schema/index.js";
 
 // Safe to run any number of times. Run AFTER `npm run db:seed` (it needs the languages and the first categories).
 // It adds the canonical service taxonomy with translations and synonyms (PRD §24), a small approved template library

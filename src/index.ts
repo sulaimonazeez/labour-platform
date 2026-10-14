@@ -1,6 +1,6 @@
 import { Hono } from "hono";
-import { app as api } from "./api/app";
-import { err } from "./api/http";
+import { app as api } from "./api/app.js";
+import { err } from "./api/http.js";
 
 // Vercel entry (zero-config Hono detection): a file named src/index.ts that imports `hono` and DEFAULT-EXPORTS the app.
 // Local/VPS entry is src/node-server.ts (starts a listener). Do not name any other file src/app|index|server.ts:

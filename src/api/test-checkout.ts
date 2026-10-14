@@ -1,12 +1,12 @@
 import "dotenv/config";
 import { and, eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, ledgerAccounts, ledgerEntries, ledgerLines, payments } from "../db/schema";
-import { accountBalance } from "../payments/ledger";
-import { reconcile } from "../payments/reconcile";
-import { signSandboxWebhook, simulateSandboxPayment } from "../payments/sandbox";
-import { app } from "./app";
-import { call, cleanupTestUsers, createProject, expect, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, ledgerAccounts, ledgerEntries, ledgerLines, payments } from "../db/schema/index.js";
+import { accountBalance } from "../payments/ledger.js";
+import { reconcile } from "../payments/reconcile.js";
+import { signSandboxWebhook, simulateSandboxPayment } from "../payments/sandbox.js";
+import { app } from "./app.js";
+import { call, cleanupTestUsers, createProject, expect, registerUser } from "./test-helpers.js";
 
 // Abandoned checkout, late payments, gateway alerts, the admin attention queue and reconciliation (sandbox gateway).
 // Needs `npm run db:seed`. Run: npm run test:checkout

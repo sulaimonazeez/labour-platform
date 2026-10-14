@@ -2,21 +2,21 @@ import { and, asc, desc, eq, gte, inArray, lt, lte, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import type { Context } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   aiInteractions, aiUsageDaily, assignments, currencies, disputes, featureFlags, idempotencyKeys, insuranceRecords, languages, marketComplianceSettings, marketCurrencies,
   marketHolidays, marketLanguages, marketPaymentMethods, marketTaxRules, marketVerificationRules, markets, moderationReports, organisationMembers, organisations,
   platformEvents, privacyRequests, programmeParticipants, programmes, projects, promotedListings, providerProfiles, providerServices, quoteVersions, quotes, rateLimitHits, recurringServices, requests,
   retentionPolicies, safetyIncidents, serviceCategories, sessions, tasks, users, verifications,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin";
-import { requireOrgMember, type OrgRole } from "../authz/organisations";
-import { runIdempotent } from "../lib/idempotency";
-import { logEvent } from "../lib/events";
-import { notify } from "../lib/notify";
-import { generateOccurrence } from "./schedule-routes";
-import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin.js";
+import { requireOrgMember, type OrgRole } from "../authz/organisations.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { logEvent } from "../lib/events.js";
+import { notify } from "../lib/notify.js";
+import { generateOccurrence } from "./schedule-routes.js";
+import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §8, §119-122 (institutions, registries, privacy-preserving analytics), §127-131 (market configuration, retention),
 // §145 (admin), §150-151 (observability, flags). Groups smaller than MIN_GROUP are never shown (PRD §121).

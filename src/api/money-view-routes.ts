@@ -1,10 +1,10 @@
 import { and, asc, desc, eq, inArray, sql } from "drizzle-orm";
 import { Hono } from "hono";
-import { db } from "../db/client";
-import { assignments, milestones, payments, providerProfiles, quoteVersions, quotes, tasks } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole, type ProjectRole } from "../authz/projects";
-import { ApiError, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { assignments, milestones, payments, providerProfiles, quoteVersions, quotes, tasks } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, PROJECT_MANAGERS, requireProjectRole, type ProjectRole } from "../authz/projects.js";
+import { ApiError, uuidParam } from "./http.js";
 
 // Read-only money views for the project screen (PRD §56, §57, §143). Only people with a money role see them.
 //   GET /projects/:id/awards     accepted providers, their agreed quote, and how much is not yet split into milestones

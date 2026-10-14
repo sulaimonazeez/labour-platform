@@ -1,7 +1,7 @@
 import { createHash, randomBytes } from "node:crypto";
 import { and, eq, gt, isNull } from "drizzle-orm";
-import { db, type Db } from "../db/client";
-import { sessions, users } from "../db/schema";
+import { db, type Db } from "../db/client.js";
+import { sessions, users } from "../db/schema/index.js";
 
 export type Tx = Parameters<Parameters<Db["transaction"]>[0]>[0];
 

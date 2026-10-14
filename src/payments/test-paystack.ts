@@ -1,8 +1,8 @@
 import { createHmac } from "node:crypto";
 import { createServer } from "node:http";
 import type { AddressInfo } from "node:net";
-import { createPaystackProvider } from "./paystack";
-import { ProviderError } from "./provider";
+import { createPaystackProvider } from "./paystack.js";
+import { ProviderError } from "./provider.js";
 
 // Exercises the REAL Paystack adapter code against a local fake Paystack server (no network, no database, no keys).
 // This proves our request shape, response mapping, error handling and signature check. It does NOT prove Paystack's

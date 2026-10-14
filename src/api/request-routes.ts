@@ -1,16 +1,16 @@
 import { and, desc, eq } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   languages, marketCurrencies, markets, projectBudgets, projectMembers, projects,
   requestPath, requests, serviceCategories, stages, tasks, users,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { requireOrgMember } from "../authz/organisations";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { requireOrgMember } from "../authz/organisations.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, isIanaTimezone, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Requests (PRD §3-4, §95). A request is what a person needs done; converting it creates the project.
 // Visibility today: the requester only. Provider/candidate visibility arrives with matching (Phase 4).

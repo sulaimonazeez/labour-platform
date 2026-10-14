@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { and, eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, projectMembers } from "../db/schema";
-import { wouldCreateCycle } from "../engine/dependencies";
-import { call, cleanupTestUsers, createProject, expect, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, projectMembers } from "../db/schema/index.js";
+import { wouldCreateCycle } from "../engine/dependencies.js";
+import { call, cleanupTestUsers, createProject, expect, registerUser } from "./test-helpers.js";
 
 // Tasks, dependencies, transitions. Needs `npm run db:seed`. Run: npm run test:tasks
 const stamp = Date.now().toString(36);

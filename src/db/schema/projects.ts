@@ -2,14 +2,14 @@ import { sql } from "drizzle-orm";
 import {
   char, check, index, integer, jsonb, pgTable, primaryKey, text, timestamp, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, minor, pk, updatedAt } from "./_common";
-import { currencies, languages, markets } from "./config";
-import { organisations, providerProfiles, users } from "./identity";
-import { serviceCategories } from "./taxonomy";
+import { createdAt, minor, pk, updatedAt } from "./_common.js";
+import { currencies, languages, markets } from "./config.js";
+import { organisations, providerProfiles, users } from "./identity.js";
+import { serviceCategories } from "./taxonomy.js";
 import {
   candidateStatus, dependencyType, materialResponsibility, projectHealth, projectRole,
   projectStatus, requestPath, requestStatus, stageStatus, taskStatus,
-} from "./enums";
+} from "./enums.js";
 
 export const requests = pgTable("requests", {
   id: pk(),

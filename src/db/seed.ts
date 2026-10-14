@@ -1,10 +1,10 @@
 import "dotenv/config";
 import { eq } from "drizzle-orm";
-import { db, queryClient } from "./client";
+import { db, queryClient } from "./client.js";
 import {
   currencies, languages, markets, marketCurrencies, marketLanguages,
   serviceCategories, serviceCategoryTranslations, serviceCategorySynonyms,
-} from "./schema";
+} from "./schema/index.js";
 
 async function upsertCategory(opts: {
   key: string;

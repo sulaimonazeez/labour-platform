@@ -2,13 +2,13 @@ import { randomUUID } from "node:crypto";
 import { and, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { assignments, projects, tasks } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { requireProjectRole } from "../authz/projects";
-import { runIdempotent } from "../lib/idempotency";
-import { getStorage } from "../lib/storage";
-import { denyEvidenceWriter, userHoldsAssignment } from "./evidence-routes";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { assignments, projects, tasks } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { requireProjectRole } from "../authz/projects.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { getStorage } from "../lib/storage.js";
+import { denyEvidenceWriter, userHoldsAssignment } from "./evidence-routes.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // Evidence FILES (PRD §66-67, §110, §132). Same three steps as request attachments, so big videos never pass through the API:
 //   1) POST /tasks/:id/evidence/upload-url { kind, mimeType, sizeBytes }  -> { storagePath, upload }  (this file)

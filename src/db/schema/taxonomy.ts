@@ -2,8 +2,8 @@ import { sql } from "drizzle-orm";
 import {
   type AnyPgColumn, boolean, index, jsonb, pgTable, primaryKey, text, unique, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, pk, updatedAt } from "./_common";
-import { riskLevel } from "./enums";
+import { createdAt, pk, updatedAt } from "./_common.js";
+import { riskLevel } from "./enums.js";
 
 // PRD §24: identity is canonical_key, never a display name.
 export const serviceCategories = pgTable("service_categories", {

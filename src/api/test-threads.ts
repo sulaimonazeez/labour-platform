@@ -1,6 +1,6 @@
 import "dotenv/config";
-import { queryClient } from "../db/client";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
+import { queryClient } from "../db/client.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // Provider directory by trade, provider services, invitations list and per-provider message threads.
 // Needs `npm run db:seed` (the electrical category) and the migrations applied.

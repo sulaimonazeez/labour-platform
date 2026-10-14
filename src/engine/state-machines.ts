@@ -1,4 +1,4 @@
-import type { milestoneStatus, paymentState, quoteStatus, taskStatus } from "../db/schema/enums";
+import type { milestoneStatus, paymentState, quoteStatus, taskStatus } from "../db/schema/enums.js";
 
 export type TaskStatus = (typeof taskStatus.enumValues)[number];
 export type PaymentState = (typeof paymentState.enumValues)[number];

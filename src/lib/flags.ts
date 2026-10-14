@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { createHash } from "node:crypto";
-import { featureFlags } from "../db/schema";
-import type { Executor } from "../db/types";
+import { featureFlags } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
 
 // PRD §151: capabilities switch on by market, organisation, category and rollout cohort.
 // A flag that does not exist is ON, so adding a flag is how you restrict something, not how you enable it.

@@ -1,11 +1,11 @@
 import { and, desc, eq, inArray, lt, or, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { activityEvents, users } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, providerVisibleTaskIds, requireProjectRole } from "../authz/projects";
-import { parseOrThrow, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { activityEvents, users } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, providerVisibleTaskIds, requireProjectRole } from "../authz/projects.js";
+import { parseOrThrow, uuidParam } from "./http.js";
 
 // The project timeline (PRD §68, §137): one chronological, read-only record generated from system events. Chat is not in it.
 //   GET /projects/:id/activity?limit=50&before=<ISO time>     newest first; `before` pages backwards

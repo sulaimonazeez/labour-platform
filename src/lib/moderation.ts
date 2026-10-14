@@ -1,5 +1,5 @@
-import { moderationReports } from "../db/schema";
-import type { Executor } from "../db/types";
+import { moderationReports } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
 
 // PRD §98-99: light, privacy-respecting screening. It never blocks or rewrites a message; it files a report for a person
 // to review. Phone numbers, emails and links are flagged because contact details are released by workflow stage.

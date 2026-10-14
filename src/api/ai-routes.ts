@@ -1,21 +1,21 @@
 import { and, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   changeRequests, marketCurrencies, markets, projectBudgets, projectDrafts, projectMembers, projects, requests, serviceCategories,
   stages, taskDependencies, tasks, users,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { requireProjectRole, PROJECT_MANAGERS } from "../authz/projects";
-import { aiStatus, extractJson, runAi } from "../ai/govern";
-import { AiUnavailable } from "../ai/providers";
-import { askAssistant, changeImpact, compareQuotes, computeBrief } from "../ai/context";
-import { buildDraft, draftSchema, findTemplate, structuralProblems } from "../ai/draft";
-import { categoryByKey, classify } from "../ai/rules";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { requireProjectRole, PROJECT_MANAGERS } from "../authz/projects.js";
+import { aiStatus, extractJson, runAi } from "../ai/govern.js";
+import { AiUnavailable } from "../ai/providers.js";
+import { askAssistant, changeImpact, compareQuotes, computeBrief } from "../ai/context.js";
+import { buildDraft, draftSchema, findTemplate, structuralProblems } from "../ai/draft.js";
+import { categoryByKey, classify } from "../ai/rules.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §16-23, §33, §54, §105, §144. AI is optional everywhere: with AI_PROVIDER=none every route here still answers
 // from rules, templates and the project record (PRD §20).

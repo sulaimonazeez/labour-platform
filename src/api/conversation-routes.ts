@@ -1,22 +1,22 @@
 import { and, desc, eq, inArray, notInArray, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, changeRequestTasks, changeRequests, conversationParticipants, conversationReads, conversations, disputes, languages,
   merchantOrders, merchants, messageConfirmations, messageTranscripts, messages, milestones, projectMembers, providerProfiles, quotes,
   stages, tasks, users,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isPlatformAdmin } from "../authz/platform-admin";
-import { getProjectRoles, isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds } from "../authz/projects";
-import { getSpeech, AiUnavailable } from "../ai/providers";
-import { readerLanguages, storeTranslations, translateExisting, translationsFor } from "../i18n/translate";
-import { runIdempotent } from "../lib/idempotency";
-import { flagMessage } from "../lib/moderation";
-import { managerUserIds, notify } from "../lib/notify";
-import type { Executor } from "../db/types";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isPlatformAdmin } from "../authz/platform-admin.js";
+import { getProjectRoles, isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds } from "../authz/projects.js";
+import { getSpeech, AiUnavailable } from "../ai/providers.js";
+import { readerLanguages, storeTranslations, translateExisting, translationsFor } from "../i18n/translate.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { flagMessage } from "../lib/moderation.js";
+import { managerUserIds, notify } from "../lib/notify.js";
+import type { Executor } from "../db/types.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §31-35 contextual chat: one conversation per (context type, context id). Access follows project membership,
 // the assigned task and explicit parties, never blanket membership (PRD §34). Originals are never overwritten (§28);

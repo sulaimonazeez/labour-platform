@@ -1,7 +1,7 @@
 import "dotenv/config";
 import { eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { users } from "../db/schema";
+import { db, queryClient } from "../db/client.js";
+import { users } from "../db/schema/index.js";
 
 // Prints the user id for an email, for PLATFORM_ADMIN_USER_IDS. Usage: npx tsx src/dev/user-id.ts you@example.com
 const email = (process.argv[2] ?? "").trim().toLowerCase();

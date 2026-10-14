@@ -1,7 +1,7 @@
 import "dotenv/config";
-import { queryClient } from "../db/client";
-import { memoryStorage } from "../lib/storage";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
+import { queryClient } from "../db/client.js";
+import { memoryStorage } from "../lib/storage.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // Evidence files (upload-url -> PUT -> confirm), the task work actions and the project timeline (D74-D76).
 // Needs `npm run db:seed`. Run: npm run test:work  (the script sets STORAGE_DRIVER=memory)

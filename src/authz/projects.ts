@@ -1,7 +1,7 @@
 import { and, eq, inArray } from "drizzle-orm";
-import { assignments, projectMembers, providerProfiles, tasks, type projectRole } from "../db/schema";
-import type { Executor } from "../db/types";
-import { ApiError } from "../api/http";
+import { assignments, projectMembers, providerProfiles, tasks, type projectRole } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { ApiError } from "../api/http.js";
 
 export type ProjectRole = (typeof projectRole.enumValues)[number];
 

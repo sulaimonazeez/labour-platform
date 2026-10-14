@@ -1,10 +1,10 @@
 import "dotenv/config";
 import { eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, assignments, projectMembers, quoteVersions, taskInvitations } from "../db/schema";
-import { computeQuoteAmounts, lineAmountMinor } from "../engine/quote-math";
-import { canTransition, QUOTE_TRANSITIONS } from "../engine/state-machines";
-import { call, cleanupTestUsers, createProject, expect, expireQuoteVersion, registerProvider, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, assignments, projectMembers, quoteVersions, taskInvitations } from "../db/schema/index.js";
+import { computeQuoteAmounts, lineAmountMinor } from "../engine/quote-math.js";
+import { canTransition, QUOTE_TRANSITIONS } from "../engine/state-machines.js";
+import { call, cleanupTestUsers, createProject, expect, expireQuoteVersion, registerProvider, registerUser } from "./test-helpers.js";
 
 // Invitations, quotes, quote versions, acceptance. Needs `npm run db:seed` and the task_invitations
 // migration. Run: npm run test:quotes   

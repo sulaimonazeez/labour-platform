@@ -1,15 +1,15 @@
 import { and, eq } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { dependencyType, projects, taskDependencies, tasks, taskStatus } from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds, requireProjectRole } from "../authz/projects";
-import { wouldCreateCycle } from "../engine/dependencies";
-import { canTransition, TASK_TRANSITIONS, type TaskStatus } from "../engine/state-machines";
-import { recordActivity } from "../lib/activity";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+import { db } from "../db/client.js";
+import { dependencyType, projects, taskDependencies, tasks, taskStatus } from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds, requireProjectRole } from "../authz/projects.js";
+import { wouldCreateCycle } from "../engine/dependencies.js";
+import { canTransition, TASK_TRANSITIONS, type TaskStatus } from "../engine/state-machines.js";
+import { recordActivity } from "../lib/activity.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 export const taskCols = {
   id: tasks.id,

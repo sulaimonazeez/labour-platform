@@ -1,19 +1,19 @@
 import { and, desc, eq, inArray, isNull, or, sql } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
+import { db } from "../db/client.js";
 import {
   assignments, featureFlags, languages, projectTemplates, projects, promotedListings, providerAvailability, providerProfiles,
   markets, providerServices, reviews, serviceCategories, tasks, templateVersions, users, verifications,
-} from "../db/schema";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin";
-import { classifyAgainst, loadCatalog, type Classification } from "../ai/rules";
-import { extractJson, runAi } from "../ai/govern";
-import { AiUnavailable } from "../ai/providers";
-import { isFeatureOn } from "../lib/flags";
-import { runIdempotent } from "../lib/idempotency";
-import { ApiError, parseOrThrow, readJson, uuidParam } from "./http";
+} from "../db/schema/index.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { isPlatformAdmin, requirePlatformAdmin } from "../authz/platform-admin.js";
+import { classifyAgainst, loadCatalog, type Classification } from "../ai/rules.js";
+import { extractJson, runAi } from "../ai/govern.js";
+import { AiUnavailable } from "../ai/providers.js";
+import { isFeatureOn } from "../lib/flags.js";
+import { runIdempotent } from "../lib/idempotency.js";
+import { ApiError, parseOrThrow, readJson, uuidParam } from "./http.js";
 
 // PRD §24 (database-driven taxonomy), §36-38 (discovery by problem, explainable ranking), §96-97 (fair ranking, labelled
 // promotion), §22-23 (template library with versions), §151 (feature flags).

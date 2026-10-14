@@ -1,9 +1,9 @@
 import { createHash } from "node:crypto";
 import { and, eq, sql } from "drizzle-orm";
-import { db } from "../db/client";
-import { activityEvents, payments } from "../db/schema";
-import { recordActivity } from "../lib/activity";
-import type { WebhookEvent } from "./provider";
+import { db } from "../db/client.js";
+import { activityEvents, payments } from "../db/schema/index.js";
+import { recordActivity } from "../lib/activity.js";
+import type { WebhookEvent } from "./provider.js";
 
 // Refund / dispute / chargeback events are LOGGED and surfaced to a human (GET /admin/attention), never applied to
 // money automatically: we have not yet seen their real payloads (D54). Dedupe is by the SHA-256 of the raw body, so a

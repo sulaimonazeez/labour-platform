@@ -1,14 +1,14 @@
 import { and, desc, eq, inArray } from "drizzle-orm";
 import { Hono } from "hono";
 import { z } from "zod";
-import { db } from "../db/client";
-import { markets, payouts, providerPayoutAccounts, providerProfiles, users } from "../db/schema";
-import type { Executor } from "../db/types";
-import { requireAuth, type AuthEnv } from "../auth/middleware";
-import { recordActivity } from "../lib/activity";
-import { idempotencyKey, runIdempotent } from "../lib/idempotency";
-import { accountCooldownMs, callGateway, payoutCols, payoutGateway, payoutMinMinor, providerBalance, reservePayout } from "../payments/payouts";
-import { ApiError, parseOrThrow, readJson } from "./http";
+import { db } from "../db/client.js";
+import { markets, payouts, providerPayoutAccounts, providerProfiles, users } from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { requireAuth, type AuthEnv } from "../auth/middleware.js";
+import { recordActivity } from "../lib/activity.js";
+import { idempotencyKey, runIdempotent } from "../lib/idempotency.js";
+import { accountCooldownMs, callGateway, payoutCols, payoutGateway, payoutMinMinor, providerBalance, reservePayout } from "../payments/payouts.js";
+import { ApiError, parseOrThrow, readJson } from "./http.js";
 
 // Provider side of payouts (mounted at /providers). Admin approval and sending live in admin-routes.ts.
 //   GET  /providers/banks?currency=NGN        PUT /providers/me/payout-account     GET /providers/me/payout-account

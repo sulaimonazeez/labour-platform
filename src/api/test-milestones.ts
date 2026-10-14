@@ -1,10 +1,10 @@
 import "dotenv/config";
 import { eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { activityEvents, evidence, projectMembers } from "../db/schema";
-import { canTransition, MILESTONE_TRANSITIONS } from "../engine/state-machines";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
-import { forceFunded } from "./test-fund";
+import { db, queryClient } from "../db/client.js";
+import { activityEvents, evidence, projectMembers } from "../db/schema/index.js";
+import { canTransition, MILESTONE_TRANSITIONS } from "../engine/state-machines.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
+import { forceFunded } from "./test-fund.js";
 
 // Milestones and evidence metadata (DECISIONS D37-D40). Needs `npm run db:seed`. Run: npm run test:milestones
 const stamp = Date.now().toString(36);

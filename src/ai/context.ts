@@ -2,11 +2,11 @@ import { and, asc, desc, eq, inArray, isNotNull, sql } from "drizzle-orm";
 import {
   activityEvents, assignments, changeRequests, changeRequestTasks, disputeEntries, disputes, evidence, issues, milestones,
   projectBudgets, projects, providerProfiles, quoteLineItems, quoteVersions, quotes, stages, taskDependencies, tasks,
-} from "../db/schema";
-import type { Executor } from "../db/types";
-import { getProjectRoles, isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds } from "../authz/projects";
-import { AiUnavailable } from "./providers";
-import { runAi } from "./govern";
+} from "../db/schema/index.js";
+import type { Executor } from "../db/types.js";
+import { getProjectRoles, isProviderOnly, PROJECT_MANAGERS, providerVisibleTaskIds } from "../authz/projects.js";
+import { AiUnavailable } from "./providers.js";
+import { runAi } from "./govern.js";
 
 // PRD §33, §54, §104, §144 and the change-impact item of §105. Everything here is DETERMINISTIC first; the optional AI
 // narrative is added on top, labelled, and never changes a number (PRD §20, §171).

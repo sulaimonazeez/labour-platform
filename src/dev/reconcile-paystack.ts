@@ -1,9 +1,9 @@
 import "dotenv/config";
 import { and, eq, gte, inArray } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { ledgerEntries, payments } from "../db/schema";
-import { getPaymentProvider } from "../payments";
-import { reconcile } from "../payments/reconcile";
+import { db, queryClient } from "../db/client.js";
+import { ledgerEntries, payments } from "../db/schema/index.js";
+import { getPaymentProvider } from "../payments/index.js";
+import { reconcile } from "../payments/reconcile.js";
 
 // READ-ONLY. Compares the gateway's transactions with our payments over the last N days (default 7).
 //   npm run reconcile            npm run reconcile -- 30

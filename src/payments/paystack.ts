@@ -1,6 +1,6 @@
 import {
   hmacSha512Matches, parseEventEnvelope, ProviderError, type PaymentProvider, type PayoutGateway, type ProviderTransaction, type VerifyResult,
-} from "./provider";
+} from "./provider.js";
 
 // Paystack adapter (collection side). Verified against Paystack's published behaviour:
 //  - amounts are integers in the currency's lowest unit (kobo for NGN), same as our minor units;

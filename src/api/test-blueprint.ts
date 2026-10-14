@@ -1,7 +1,7 @@
 import "dotenv/config";
 import postgres from "postgres";
-import { queryClient } from "../db/client";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
+import { queryClient } from "../db/client.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // The blueprint layer end to end, with the MOCK AI / translation / speech adapters (no network, no keys).
 // Needs: migrations applied, `npm run db:seed` and `npm run db:seed:blueprint`.  Run: npm run test:blueprint

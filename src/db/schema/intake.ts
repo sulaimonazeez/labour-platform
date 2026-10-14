@@ -1,8 +1,8 @@
 import { sql } from "drizzle-orm";
 import { bigint, char, check, index, jsonb, pgEnum, pgTable, primaryKey, text, timestamp, uuid } from "drizzle-orm/pg-core";
-import { createdAt, pk, updatedAt } from "./_common";
-import { users } from "./identity";
-import { requests } from "./projects";
+import { createdAt, pk, updatedAt } from "./_common.js";
+import { users } from "./identity.js";
+import { requests } from "./projects.js";
 
 // Request intake (PRD §17, §37, §141): the user's answers to the guided questions and the photos/videos/documents
 // that show the problem. Own file and own enums so it stays self-contained. DECISIONS D38-D40.

@@ -3,12 +3,12 @@ import {
   type AnyPgColumn, boolean, char, check, date, index, integer, numeric, pgTable,
   primaryKey, smallint, text, unique, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, pk, updatedAt } from "./_common";
-import { languages, markets } from "./config";
-import { serviceCategories } from "./taxonomy";
+import { createdAt, pk, updatedAt } from "./_common.js";
+import { languages, markets } from "./config.js";
+import { serviceCategories } from "./taxonomy.js";
 import {
   orgRole, orgType, providerKind, userStatus, verificationClass, verificationStatus,
-} from "./enums";
+} from "./enums.js";
 
 export const users = pgTable("users", {
   id: pk(),

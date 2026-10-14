@@ -1,7 +1,7 @@
 import { createHmac } from "node:crypto";
 import {
   hmacSha512Matches, parseEventEnvelope, ProviderError, type PaymentProvider, type PayoutGateway,
-} from "./provider";
+} from "./provider.js";
 
 // In-process fake gateway for tests and local development. It can only be told a payment succeeded through
 // simulateSandboxPayment() (a function call), never over HTTP, and getPaymentProvider() refuses it in production.

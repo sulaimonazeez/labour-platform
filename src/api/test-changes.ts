@@ -1,8 +1,8 @@
 import "dotenv/config";
 import { and, eq } from "drizzle-orm";
-import { db, queryClient } from "../db/client";
-import { notifications, projectBaselines, projectBudgets, projects } from "../db/schema";
-import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers";
+import { db, queryClient } from "../db/client.js";
+import { notifications, projectBaselines, projectBudgets, projects } from "../db/schema/index.js";
+import { call, cleanupTestUsers, createProject, expect, registerProvider, registerUser } from "./test-helpers.js";
 
 // Change requests (PRD §58-60, D64-D68), reviews (§91, D69-D70) and notifications (§112, D72).
 // Needs `npm run db:seed` and migrations applied. Run: npm run test:changes

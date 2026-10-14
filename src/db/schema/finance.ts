@@ -3,15 +3,15 @@ import {
   boolean, char, check, date, index, integer, jsonb, numeric, pgTable, text,
   timestamp, unique, uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, minor, pk, updatedAt } from "./_common";
-import { currencies, markets } from "./config";
-import { providerProfiles, users } from "./identity";
-import { projects } from "./projects";
-import { milestones } from "./delivery";
-import { serviceCategories } from "./taxonomy";
+import { createdAt, minor, pk, updatedAt } from "./_common.js";
+import { currencies, markets } from "./config.js";
+import { providerProfiles, users } from "./identity.js";
+import { projects } from "./projects.js";
+import { milestones } from "./delivery.js";
+import { serviceCategories } from "./taxonomy.js";
 import {
   actorType, ledgerAccountKind, ledgerDirection, ledgerEntryKind, paymentState, payoutState,
-} from "./enums";
+} from "./enums.js";
 
 // Payment state is deliberately separate from task/milestone state (PRD §135).
 export const payments = pgTable("payments", {

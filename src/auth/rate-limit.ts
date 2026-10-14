@@ -2,9 +2,9 @@ import { createHash } from "node:crypto";
 import { lt, sql } from "drizzle-orm";
 import { createMiddleware } from "hono/factory";
 import type { Context } from "hono";
-import { db } from "../db/client";
-import { rateLimitHits } from "../db/schema";
-import { err } from "../api/http";
+import { db } from "../db/client.js";
+import { rateLimitHits } from "../db/schema/index.js";
+import { err } from "../api/http.js";
 
 export const sha256 = (s: string) => createHash("sha256").update(s).digest("hex");
 

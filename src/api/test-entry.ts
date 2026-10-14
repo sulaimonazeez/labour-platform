@@ -1,5 +1,5 @@
 import "dotenv/config";
-import app from "../index";
+import app from "../index.js";
 
 // Checks the Vercel entry (src/index.ts): the default export serves the whole API, and error / 404 handling still
 // produces our JSON bodies through the wrapper. No database rows are read or written.
