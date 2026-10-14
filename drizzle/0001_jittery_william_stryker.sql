@@ -1,0 +1,1 @@
+ALTER TABLE "project_baselines" ADD CONSTRAINT "project_baselines_cr_fk" FOREIGN KEY ("created_by_change_request_id") REFERENCES "public"."change_requests"("id") ON DELETE no action ON UPDATE no action;
